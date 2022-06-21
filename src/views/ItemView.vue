@@ -48,7 +48,7 @@ export default {
   padding: 0.5rem;
 }
 .fa-user {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .user-description {
   padding-left: 8px;
