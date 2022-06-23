@@ -10,7 +10,6 @@ export default function createListView(name) {
         this.$store
           .dispatch("FETCH_LIST", this.$route.name)
           .then(() => {
-            console.log("fetched");
             emitter.emit("end:spinner");
           })
           .catch((error) => {
