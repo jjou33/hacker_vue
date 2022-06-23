@@ -4,14 +4,45 @@
     <transition name="page">
       <router-view></router-view>
     </transition>
+    <spinner :loading="loadingStatus"></spinner>
   </div>
 </template>
 
 <script>
 import ToolBar from "./components/ToolBar.vue";
+import Spinner from "./components/Spinner-bar.vue";
+import { emitter } from "./utils/mitt.js";
 export default {
   components: {
     ToolBar,
+    Spinner,
+  },
+  data() {
+    return {
+      loadingStatus: false,
+    };
+  },
+  methods: {
+    startSpinner() {
+      this.loadingStatus = true;
+    },
+    endSpinner() {
+      this.loadingStatus = false;
+    },
+  },
+  created() {
+    emitter.on("start:spinner", () => {
+      console.log("start");
+      this.startSpinner();
+    });
+    emitter.on("end:spinner", () => {
+      console.log("end");
+      this.endSpinner();
+    });
+  },
+  beforeDestroy() {
+    emitter.off("start:spinner", this.startSpinner);
+    emitter.off("end:spinner", this.endSpinner);
   },
 };
 </script>

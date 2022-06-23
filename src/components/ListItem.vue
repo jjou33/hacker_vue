@@ -38,35 +38,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  created() {
-    const routeName = this.$route.name;
-    let actionName = "";
-    if (routeName !== null && routeName === "news") {
-      actionName = "FETCH_NEWS";
-    } else if (routeName === "asks") {
-      actionName = "FETCH_ASKS";
-    } else if (routeName === "jobs") {
-      actionName = "FETCH_JOBS";
-    } else {
-      console.log(actionName);
-    }
-    this.$store.dispatch(actionName);
-  },
   computed: {
-    listItems() {
-      const name = this.$route.name;
-      if (name !== null && name === "news") {
-        return this.$store.state.news;
-      } else if (name === "asks") {
-        return this.$store.state.asks;
-      } else if (name === "jobs") {
-        return this.$store.state.jobs;
-      } else {
-        console.log(name);
-      }
-      return null;
-    },
+    ...mapGetters({
+      listItems: "fetchedList",
+    }),
   },
 };
 </script>
