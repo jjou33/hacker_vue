@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <tool-bar></tool-bar>
-    <transition name="page">
-      <router-view></router-view>
-    </transition>
+    <!-- <transition name="page"> -->
+    <router-view></router-view>
+    <!-- </transition> -->
     <spinner :loading="loadingStatus"></spinner>
   </div>
 </template>
