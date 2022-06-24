@@ -6,16 +6,28 @@ const config = {
 };
 
 // API 함수들 정리
-function fetchList(pageName) {
-  return axios.get(`${config.baseUrl}${pageName}/1.json`);
+async function fetchList(pageName) {
+  try {
+    return await axios.get(`${config.baseUrl}${pageName}/1.json`);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function fetchUserInfo(userName) {
-  return axios.get(`${config.baseUrl}user/${userName}.json`);
+async function fetchUserInfo(userName) {
+  try {
+    return await axios.get(`${config.baseUrl}user/${userName}.json`);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function fetchItemInfo(id) {
-  return axios.get(`${config.baseUrl}item/${id}.json`);
+async function fetchItemInfo(id) {
+  try {
+    return await axios.get(`${config.baseUrl}item/${id}.json`);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export { fetchUserInfo, fetchItemInfo, fetchList };

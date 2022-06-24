@@ -1,5 +1,6 @@
 import ListView from "./ListView.vue";
 import { emitter } from "../utils/mitt.js";
+
 export default function createListView(name) {
   return {
     // 재사용할 인스턴스 옵션들
